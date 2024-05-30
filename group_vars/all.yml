@@ -1,28 +1,29 @@
 ---
 web_servers:
-  - 192.168.1.101
-  - 192.168.1.102
+  - 192.168.165.65
+  - 192.168.165.66
 
-db_server: 192.168.1.103
+db_server: 192.168.165.74
 db_name: webapp_db
 db_user: webapp_user
 db_password: secure_password
 
 haproxy_cfg: /etc/haproxy/haproxy.cfg
 web_app_dir: /var/www/html/webapp
+git_repo: https://github.com/kubowania/space-invaders.git
 
 system_users:
   - name: webadmin
-    uid: 1001
+    uid: 1010
     gid: 1001
     shell: /bin/bash
     password: "{{ 'password' | password_hash('sha512') }}"
 
 dns_records:
   - name: webapp.example.com
-    address: 192.168.1.101
+    address: 192.168.165.65
   - name: webapp.example.com
-    address: 192.168.1.102
+    address: 192.168.165.66
 
 ulimits:
   - domain: "*"
